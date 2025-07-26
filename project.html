@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 <style>
 body {
-    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    background: radial-gradient(circle at top left, #1e1e2f 0%, #0f0f1a 100%);
     font-family: 'Raleway', sans-serif;
     margin: 0;
     min-height: 100vh;
@@ -15,10 +15,10 @@ body {
     padding: 48px 24px 48px 24px;
 }
 .title {
-  font-family: 'Raleway', sans-serif;
+   font-family: 'Playfair Display', serif;
   font-size: 4.5rem;
   font-weight: 700;
-  color: #2c2c2c;
+  color: #ffffff;
   text-align: center;
   margin-top: 0;
   margin-bottom: 2.5rem;
@@ -55,10 +55,9 @@ body {
         backdrop-filter 0.5s cubic-bezier(0.23,1,0.32,1);
     cursor: pointer;
     will-change: transform, backdrop-filter;
-    border: 1.5px solid #0080ff;
     /* Glass effect */
-    backdrop-filter: blur(8px) saturate(140%);
-    -webkit-backdrop-filter: blur(8px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
     background-clip: padding-box;
 }
 .card3d:hover {
@@ -77,7 +76,7 @@ body {
   background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.82) blur(0.5px) grayscale(0.08);
+    filter: brightness(0.42) blur(0.5px) grayscale(0.08);
     transition: filter 0.5s cubic-bezier(0.23,1,0.32,1);
     z-index: 1;
 }
@@ -216,7 +215,7 @@ const projects = [
     description: "Combines real-time play with the idea of spatial challenges. Focuses on the live, continuous flow of spatial data between players as they conquer nations with knowledge.",
     image: "../assets/project img/spatialBackend.png",
     link: "https://github.com/Easyblend/Spatial-Showdown",
-    tech: ["devicon-java-plain", "devicon-socketio-original", "devicon-postgresql-plain", "devicon-terraform-plain", "devicon-spring-plain"]
+    tech: [ "devicon-spring-plain", "devicon-java-plain", "devicon-socketio-original", "devicon-postgresql-plain", "devicon-terraform-plain",]
   },
   {
     title: "flexicoin",
