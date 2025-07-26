@@ -8,9 +8,10 @@
 
   <!-- ✅ Professional Meta Description -->
   <meta name="description"
-    content="Emmanuel Kumah is a passionate full-stack web developer specializing in modern, scalable web applications. Explore his portfolio to discover dynamic projects, polished user interfaces, and powerful back-end solutions. Let's build your next digital product together." />
+    content="Emmanuel Kumah is a passionate full-stack specializing in modern, scalable web applications. Explore his portfolio to discover dynamic projects, polished user interfaces, and powerful back-end solutions. Let's build your next digital product together." />
 
-  <meta name="keywords" content="Emmanuel Kumah, full-stack developer, portfolio, web development, software engineer, frontend, backend, JavaScript, React, Node.js" />
+  <meta name="keywords"
+    content="Emmanuel Kumah, full-stack developer, portfolio, software engineer, frontend, backend, Java, JavaScript, React, Node.js" />
   <meta name="author" content="Emmanuel Kumah" />
 
   <!-- ✅ Favicon -->
@@ -18,7 +19,9 @@
 
   <!-- Main Styles -->
   <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css" />
+  </noscript>
 </head>
 
 
@@ -56,7 +59,8 @@
                   class="label">Email</span></a>
             </li>
             <li>
-              <a class="icon solid fa-file" href="Emmanuel Kumah Fullstack CV Resume.pdf" title="Emmanuel Kumah's Resume" download>
+              <a class="icon solid fa-file" href="Emmanuel Kumah Fullstack CV Resume.pdf"
+                title="Emmanuel Kumah's Resume" download>
                 <span class="label">Resume</span>
               </a>
             </li>
@@ -64,9 +68,10 @@
         </nav>
         <div id="app"></div>
         <section id="projects" style="margin-top: 1em; text-align: center;">
-  <a href="https://crowdtest-dev.framer.website/" class="button" target="_blank" style="display: inline-block; margin-top: 1em; font-weight: 900; position: relative; overflow: hidden;">
-    <span style="position: relative; z-index: 2;">🚀 Check out what I am currently working on</span>
-    <span style="
+          <a href="https://crowdtest-dev.framer.website/" class="button" target="_blank"
+            style="display: inline-block; margin-top: 1em; font-weight: 900; position: relative; overflow: hidden;">
+            <span style="position: relative; z-index: 2;">🚀 Check out what I am currently working on</span>
+            <span style="
       pointer-events: none;
       position: absolute;
       inset: 0;
@@ -77,15 +82,20 @@
       transition: opacity 0.3s;
       z-index: 1;
     "></span>
-  </a>
-</section>
+          </a>
+        </section>
       </header>
-      
+
       <!-- Footer -->
       <footer id="footer">
         <!-- <a class="copyright" href="project.html">Made with ❤️ by Emmanuel Kumah</a> -->
         <span class="copyright">&copy; 2025 Emmanuel Kumah</span>
       </footer>
+        <a href="project.html" id="cartoon-banner" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;">
+          <span class="banner-text" style="margin-right: 1em;">👋 View Projects</span>
+          <img src="assets/software tester-pana.svg" alt="Cartoon Developer" class="cartoon-img" style="height: 88px;" />
+        </a>
+
     </div>
   </div>
   <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
@@ -102,19 +112,19 @@
 
     var app = document.getElementById('app');
 
-var typewriter = new Typewriter(app, {
-    loop: true
-});
+    var typewriter = new Typewriter(app, {
+      loop: true
+    });
 
-typewriter.typeString('Be simple but Creative')
-    .pauseFor(2500)
-    .deleteAll()
-    .typeString('Less code, Fewer bugs')
-    .pauseFor(2500)
-    .deleteAll()
-    .typeString('<strong>Automate it all</strong>')
-    .pauseFor(2500)
-    .start();
+    typewriter.typeString('Be simple but Creative')
+      .pauseFor(2500)
+      .deleteAll()
+      .typeString('Less code, Fewer bugs')
+      .pauseFor(2500)
+      .deleteAll()
+      .typeString('<strong>Automate it all</strong>')
+      .pauseFor(2500)
+      .start();
   </script>
 </body>
 
