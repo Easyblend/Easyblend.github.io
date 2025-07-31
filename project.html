@@ -1,375 +1,284 @@
-<!-- Add this to your <head> for fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-<style>
-body {
-    background: radial-gradient(circle at top left, #1e1e2f 0%, #0f0f1a 100%);
-    font-family: 'Raleway', sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    color: #ffffff;
-}
-.wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 48px 24px 48px 24px;
-}
-.title {
-   font-family: 'Playfair Display', serif;
-  font-size: 4.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 2.5rem;
-  letter-spacing: 1.5px;
-  text-shadow: 0 2px 18px rgba(0,0,0,0.22);
-  transition: opacity 0.5s ease-in-out; /* ← This is what was missing */
-}
-.projects-3d {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 0.5rem;
-    padding: 0;
-}
-.card3d-wrap {
-    perspective: 1200px;
-    width: 100%;
-    height: 370px;
-    display: flex;
-    align-items: stretch;
-}
-/* Glassy background for the card */
-.card3d {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(35,37,38,0.55) 0%, rgba(65,67,69,0.45) 100%);
-    border-radius: 10px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden;
-    position: relative;
-    transition: 
-        transform 0.5s cubic-bezier(0.23,1,0.32,1), 
-        box-shadow 0.5s cubic-bezier(0.23,1,0.32,1),
-        background 0.5s cubic-bezier(0.23,1,0.32,1),
-        backdrop-filter 0.5s cubic-bezier(0.23,1,0.32,1);
-    cursor: pointer;
-    will-change: transform, backdrop-filter;
-    /* Glass effect */
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-    background-clip: padding-box;
-}
-.card3d:hover {
-    transform: rotateY(10deg) rotateX(6deg) scale(1.045);
-    box-shadow: 0 36px 90px rgba(0,0,0,0.38), 0 6px 18px rgba(0,0,0,0.10);
-    border-color: #ffffff;
-    /* Glass hover effect: more blur, more transparency, subtle border */
-    background: linear-gradient(135deg, rgba(244,114,182,0.18) 0%, rgba(79,70,229,0.13) 100%);
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-}
-.card3d-bg {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-  background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.82) blur(0.9px) grayscale(0.08);
-    transition: filter 0.5s cubic-bezier(0.23,1,0.32,1);
-    z-index: 1;
-}
-.card3d:hover .card3d-bg {
-    filter: brightness(0.7) blur(1.5px) grayscale(0.18);
-}
-.card3d-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.82) 100%);
-    opacity: 0.92;
-    z-index: 2;
-    pointer-events: none;
-}
-.card3d-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    padding: 2.2rem 1.5rem 1.7rem;
-    color: #fff;
-    transition: transform 0.5s cubic-bezier(0.23,1,0.32,1), opacity 0.5s cubic-bezier(0.23,1,0.32,1);
-    transform: translateY(38%);
-    opacity: 0.7;
-    background: linear-gradient(0deg, rgba(30,30,40,0.92) 80%, rgba(30,30,40,0.0) 100%);
-    border-bottom-left-radius: 22px;
-    border-bottom-right-radius: 22px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-}
-.card3d:hover .card3d-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-.card3d-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-    color: #f472b6;
-}
-.card3d-desc {
-    font-size: 1.08rem;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-    color: #ffe;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.12);
-}
-.card3d-link {
-    display: inline-block;
-    color: #f472b6;
-    font-weight: 700;
-    font-size: 1.08rem;
-    text-decoration: none;
-    border-bottom: 2px solid #f472b6;
-    border-radius: 2px;
-    padding-bottom: 2px;
-    transition: color 0.3s, border-color 0.3s, background 0.3s;
-    background: rgba(255,255,255,0.03);
-    box-shadow: 0 2px 8px rgba(244,114,182,0.08);
-}
-.card3d-link:hover {
-    color: #4f46e5;
-    border-color: #4f46e5;
-    background: #fff2;
-}
-
-.card3d-tech {
-    margin: 0.8rem 0 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    font-size: 1.6rem;
-}
-.card3d-tech i {
-    transition: transform 0.3s;
-}
-.card3d-tech i:hover {
-    transform: scale(1.25);
-}
-
-
-@media (max-width: 1000px) {
-    .wrapper { padding: 32px 8px; }
-    .projects-3d { gap: 1.5rem; }
-    .card3d-wrap { height: 340px; }
-}
-@media (max-width: 700px) {
-    .wrapper { padding: 18px 2vw; }
-    .projects-3d { grid-template-columns: 1fr; gap: 1.1rem; }
-    .card3d-wrap { height: 320px; }
-    .title { font-size: 2rem; }
-}
-
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-in {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.back-btn {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  color: #f472b6;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border-bottom: 2px solid #f472b6;
-  border-radius: 2px;
-  padding-bottom: 2px;
-  box-shadow: 0 2px 8px rgba(244,114,182,0.08);
-  transition: color 0.3s, border-color 0.3s, background 0.3s;
-}
-
-.back-btn:hover {
-  color: #4f46e5;
-  background-color: none;
-  border-color: none;
-  background: none;
-}
-</style>
-
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-<!-- Styles -->
-<style>
-/* [Keep your existing CSS styles exactly as they are] */
-</style>
-
-<!-- HTML -->
-<div class="wrapper">
-  <a href="/" class="back-btn">
-    ← Back
-  </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet"/>
   <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #1e1e2f 0%, #0f0f1a 100%);
+      margin: 0;
+      color: #fff;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #f472b6;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #f472b6;
+      font-size: 1rem;
+      transition: color 0.4s, border-color 0.3s;
+    }
+
     .back-btn:hover {
       color: #4f46e5;
       border-color: #4f46e5;
-      background: #fff2;
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.22);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+.card-bg {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+}
+
+.card-tech-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 0.4rem;
+  font-size: 1.1rem;
+  flex-wrap: wrap;
+  background: rgb(12, 12, 12); /* optional: subtle dark background for contrast */
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+    .card-content {
+      padding: 0.8rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f472b6;
+      margin: 0px;
+    }
+
+
+    .card-tech i {
+      transition: transform 0.2s ease;
+    }
+
+    .card-tech i:hover {
+      transform: scale(1.2);
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: #ddd;
+      line-height: 1.4;
+      flex-grow: 1;
+      margin: 0px;
+    }
+
+    .card-link {
+      font-size: 0.85rem;
+      align-self: flex-start;
+      color: #f472b6;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .card-link:hover {
+      color: #4f46e5;
+      border-color: #4f46e5;
+    }
+
+    .fade-in {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
   </style>
+</head>
+<body>
+  <div class="wrapper">
+    <a href="/" class="back-btn">← Back</a>
+    <h1 class="title" id="rotatingTitle">✨ Personal & Unique</h1>
+    <section class="projects" id="projectsContainer"></section>
+  </div>
 
-  <h1 class="title" id="rotatingTitle">✨ Personal & Unique</h1>
-  <main>
-    <section class="projects-3d" id="projectsContainer"></section>
-  </main>
-</div>
-
-
-<script>
-const projects = [
+  <script>
+   const projects = [
   {
     title: "Biological Sample Management App",
-    description: "Full-stack web application designed to manage biological samples efficiently. The project includes a React + TypeScript frontend built with Vite and a Python FastAPI backend with SQLAlchemy for database interactions.",
+    description: "Full-stack app for managing biological samples, featuring a React + TypeScript frontend and a FastAPI backend with SQLAlchemy and PostgreSQL.",
     image: "../assets/project img/sporeBio.png",
     link: "https://github.com/Easyblend/Biological-Sample-Management",
     tech: ["devicon-react-original", "devicon-typescript-plain", "devicon-python-plain", "devicon-fastapi-plain", "devicon-postgresql-plain", "devicon-docker-plain"]
   },
   {
     title: "Spatial Showdown Backend",
-    description: "Combines real-time play with the idea of spatial challenges. Focuses on the live, continuous flow of spatial data between players as they conquer nations with knowledge.",
+    description: "Backend for a real-time spatial challenge game, handling live data flow and player interactions using Java, Spring, and web sockets.",
     image: "../assets/project img/spatialBackend.png",
     link: "https://github.com/Easyblend/Spatial-Showdown",
-    tech: [ "devicon-spring-plain", "devicon-java-plain", "devicon-socketio-original", "devicon-postgresql-plain", "devicon-terraform-plain",]
+    tech: [ "devicon-spring-plain", "devicon-java-plain", "devicon-socketio-plain", "devicon-postgresql-plain", "devicon-terraform-plain",]
   },
   {
     title: "flexicoin",
-    description: "Web 3 web app that allows user to buy crypto and foreign currencies with their mobile money wallet, and also allows users to send money to their friends and family using their mobile money wallet.",
+    description: "Web3 app for buying crypto and foreign currencies with mobile money, plus sending funds to friends and family via wallet integration.",
     image: "../assets/project img/flexicoin.gif",
     link: "https://github.com/Easyblend/Flexicoins",
     tech: ["devicon-javascript-plain", "devicon-react-original", "devicon-firebase-plain", "devicon-tailwindcss-original"]
   },
   {
     title: "DASTA",
-    description: "An application for a DASTA (Self-piloted Drone for Agricultural Field Surveillance) device. It allows users to control the drone, view live video feeds, and manage flight paths.",
+    description: "App for manually controlling a self-piloted agricultural drone, featuring live video feeds and flight path management for field surveillance.",
     image: "../assets/project img/Dasta.png",
     link: "https://github.com/Easyblend/DASTA-APPLICATION",
     tech: ["devicon-threejs-original", "devicon-javascript-plain", "devicon-html5-plain", "devicon-css3-plain"]
   },
   {
     title: "Spatial Showdown Frontend",
-    description: "Combines real-time play with the idea of spatial challenges. Focuses on the live, continuous flow of spatial data between players as they conquer nations with knowledge. This is the frontend part of the project.",
+    description: "Frontend for a real-time spatial challenge game, enabling live data visualization and player interaction using React and Material UI.",
     image: "../assets/project img/spatialFrontend.png",
     link: "https://github.com/Easyblend/Spatial-Showdown-frontend",
     tech: ["devicon-react-original", "devicon-javascript-plain", "devicon-materialui-plain"]
   },
   {
     title: "Police Map Reporting System",
-    description: "This project aims to provide a platform for users to report and track incidents in their neighborhoods, enhancing community safety and awareness.",
+    description: "Platform for reporting and tracking neighborhood incidents, enhancing community safety and awareness with real-time mapping.",
     image: "../assets/project img/policeMap.png",
     link: "https://github.com/Easyblend/Map-Reporting-System",
     tech: ["devicon-javascript-plain", "devicon-react-original", "devicon-firebase-plain"]
   },
   {
     title: "Zero Hunger",
-    description: "This project aims to provide a platform for users to track and manage food resources, reducing waste and promoting sustainability.",
+    description: "Platform for tracking and managing food resources, aiming to reduce waste and promote sustainability through data visualization.",
     image: "../assets/project img/zero hunger.png",
     link: "https://github.com/Easyblend/Zero-hunger",
     tech: ["devicon-react-original", "devicon-chartjs-plain", "devicon-firebase-plain", "devicon-bootstrap-plain"]
   },
   {
     title: "Medical Chatbot",
-    description: "A chatbot designed to assist with medical inquiries and provide information on various health topics.",
+    description: "Chatbot designed to assist users with medical inquiries and provide health information using a simple web interface.",
     image: "../assets/project img/medicabot.png",
     link: "https://github.com/Easyblend/Medical-chat-bot",
     tech: ["devicon-vscode-plain","devicon-javascript-plain", "devicon-html5-plain", "devicon-bootstrap-plain"]
   },
   {
     title: "California Housing Price Prediction",
-    description: "Predicting the Housing prices around california coast, this project uses machine learning to analyze various factors affecting real estate prices.",
+    description: "Machine learning project for predicting California housing prices, analyzing key factors with Python, Pandas, and scikit-learn.",
     image: "../assets/project img/california price.png",
     link: "https://github.com/Easyblend/California-Housing-Prediction",
-    tech: ["devicon-python-plain", "devicon-numpy-original", "devicon-pandas-original", "devicon-scikit-learn-plain"]
+    tech: ["devicon-python-plain", "devicon-numpy-original", "devicon-pandas-original", "devicon-scikitlearn-plain"]
   },
   {
     title: "Java contact management app",
-    description: "A contact management application built with Java, JavaFX and SQLite, allowing users to manage their contacts efficiently.",
+    description: "Contact management app built with Java, JavaFX, and SQLite, allowing users to organize and manage contacts efficiently.",
     image: "../assets/project img/javaContact.png",
     link: "https://github.com/Easyblend/ContactApp",
     tech: ["devicon-java-plain", "devicon-sqlite-plain", "devicon-javafx-plain"]
   },
   {
     title: "Java-A-MAS1-Polymorphic-Simulation",
-    description: "Multi Agent System (MAS) simulation in Java, showcasing polymorphism and agent interactions. Good for understanding agent-based modeling.",
+    description: "Java-based multi-agent system simulation, showcasing polymorphism and agent interactions for modeling complex behaviors.",
     image: "../assets/project img/java polymorphic.png",
     link: "https://github.com/Easyblend/Java-A-MAS1-Polymorphic-Simulation",
     tech: ["devicon-java-plain", "devicon-sqlite-plain"]
   }
 ];
 
+    const container = document.getElementById('projectsContainer');
 
-const container = document.getElementById('projectsContainer');
+    const plainIcons = ["devicon-threejs-original", "devicon-socketio-plain", "devicon-scikitlearn-plain", "devicon-java-plain"];
 
-projects.forEach(project => {
-  const card = document.createElement('div');
-  card.className = 'card3d-wrap';
-  card.innerHTML = `
-  <div class="card3d">
-    <div class="card3d-bg" style="background-image:url('${project.image}');"></div>
-    <div class="card3d-overlay"></div>
-    <div class="card3d-content">
-      <h2 class="card3d-title">${project.title}</h2>
-      <div class="card3d-tech">
-        ${project.tech.map(icon => 
-          icon === "devicon-threejs-original" 
-        ? `<i class="${icon}"></i>` 
-        : `<i class="${icon} colored"></i>`
-        ).join('')}
-      </div>
-      <p class="card3d-desc">${project.description}</p>
-      <a class="card3d-link" href="${project.link}" target="_blank">View on GitHub →</a>
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'card';
+     card.innerHTML = `
+  <div class="card-bg" style="background-image:url('${project.image}')">
+    <div class="card-tech-overlay">
+      ${project.tech.map(icon => plainIcons.includes(icon) ? `<i class="${icon}"></i>` : `<i class="${icon} colored"></i>`).join('')}
     </div>
   </div>
+  <div class="card-content">
+    <h2 class="card-title">${project.title}</h2>
+    <p class="card-desc">${project.description}</p>
+    <a class="card-link" href="${project.link}" target="_blank">View on GitHub →</a>
+  </div>
 `;
+      container.appendChild(card);
+    });
 
-  container.appendChild(card);
-});
+    const titles = [
+      "✨ Personal & Unique",
+      "🖼️ Code Gallery",
+      "🌟 Highlights",
+      "🧑‍💻 What I've Been Up To",
+      "🧪 Code Meets Imagination",
+      "🧠 A Glimpse Into My Brain",
+      "🏆 Stuff I’m Proud Of",
+      "🌙 Built from 2 AM Curiosity"
+    ];
 
-const titles = [
-  "✨ Personal & Unique",
-  "🖼️ Code Gallery",
-  "🌟 Highlights",
-  "🧑‍💻 What I've Been Up To",
-  "🧪 Code Meets Imagination",
-  "🧠 A Glimpse Into My Brain 🧠",
-  "🏆 Stuff I’m Proud Of",
-  "🌙 Built from 2 AM Curiosity"
-];
-
-let current = 0;
-const titleElement = document.getElementById('rotatingTitle');
-
-titleElement.classList.add('fade-in');
-
-setInterval(() => {
-  // Fade out
-  titleElement.classList.remove('fade-in');
-  titleElement.classList.add('fade-out');
-
-  setTimeout(() => {
-    // Change text
-    current = (current + 1) % titles.length;
-    titleElement.textContent = titles[current];
-
-    // Fade in
-    titleElement.classList.remove('fade-out');
+    let current = 0;
+    const titleElement = document.getElementById('rotatingTitle');
     titleElement.classList.add('fade-in');
-  }, 500); // Match transition duration
-}, 4000);
-</script>
+
+    setInterval(() => {
+      titleElement.classList.replace('fade-in', 'fade-out');
+      setTimeout(() => {
+        current = (current + 1) % titles.length;
+        titleElement.textContent = titles[current];
+        titleElement.classList.replace('fade-out', 'fade-in');
+      }, 500);
+    }, 4000);
+  </script>
+</body>
+</html>
