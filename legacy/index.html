@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Emmanuel Kumah | Full-Stack Web Developer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <!-- ✅ Professional Meta Description -->
+  <meta name="description"
+    content="Emmanuel Kumah is a passionate full-stack specializing in modern, scalable web applications. Explore his portfolio to discover dynamic projects, polished user interfaces, and powerful back-end solutions. Let's build your next digital product together." />
+
+  <meta name="keywords"
+    content="Emmanuel Kumah, full-stack developer, portfolio, software engineer, frontend, backend, Java, JavaScript, React, Node.js" />
+  <meta name="author" content="Emmanuel Kumah" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png" />
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css" />
+  </noscript>
+</head>
+
+
+<body class="is-preload">
+  <div id="wrapper">
+    <div id="bg"></div>
+    <div id="overlay"></div>
+    <div id="main">
+      <!-- Header -->
+      <header id="header">
+        <h1>Emmanuel Kumah</h1>
+        <p>
+          Full stack developer &nbsp;&bull;&nbsp; Javascript Addict
+          &nbsp;&bull;&nbsp; Software Engineer
+        </p>
+        <nav>
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/easy_blend93/" class="icon brands fa-instagram"><span
+                  class="label">Instgram</span></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/emmanuel-kumah-692431224/" class="icon brands fa-linkedin"><span
+                  class="label">Linkedin</span></a>
+            </li>
+            <li>
+              <a href="https://github.com/easyblend" class="icon brands fa-github"><span class="label">Github</span></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/easyblend85" class="icon brands fa-twitter"><span
+                  class="label">Twitter</span></a>
+            </li>
+            <li>
+              <a href="mailto:kenzieemma072@gmail.com" class="icon solid fa-envelope"><span
+                  class="label">Email</span></a>
+            </li>
+            <li>
+              <a class="icon solid fa-file" href="Emmanuel Kumah Fullstack CV Resume.pdf"
+                title="Emmanuel Kumah's Resume" download>
+                <span class="label">Resume</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="app"></div>
+        <section id="projects" style="margin-top: 1em; text-align: center;">
+          <a href="https://crowdtest-dev.framer.website/" class="button" target="_blank"
+            style="display: inline-block; margin-top: 1em; font-weight: 900; position: relative; overflow: hidden;">
+            <span style="position: relative; z-index: 2;">🚀 Check out what I am currently working on</span>
+            <span style="
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(6, 153, 252, 0.477) 0%, rgba(0,0,0,0.02) 100%);
+      mix-blend-mode: lighten;
+      opacity: 0.7;
+      border-radius: 0.5em;
+      transition: opacity 0.3s;
+      z-index: 1;
+    "></span>
+          </a>
+        </section>
+      </header>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <!-- <a class="copyright" href="project.html">Made with ❤️ by Emmanuel Kumah</a> -->
+        <span class="copyright">&copy; 2025 Emmanuel Kumah</span>
+      </footer>
+        <a href="project.html" id="cartoon-banner" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;">
+          <span class="banner-text" style="margin-right: 1em;">👋 View Projects</span>
+          <img src="assets/software tester-pana.svg" alt="Cartoon Developer" class="cartoon-img" style="height: 88px;" />
+        </a>
+
+    </div>
+  </div>
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script>
+    window.onload = function () {
+      document.body.classList.remove("is-preload");
+    };
+    window.ontouchmove = function () {
+      return false;
+    };
+    window.onorientationchange = function () {
+      document.body.scrollTop = 0;
+    };
+
+    var app = document.getElementById('app');
+
+    var typewriter = new Typewriter(app, {
+      loop: true
+    });
+
+    typewriter.typeString('Be simple but Creative')
+      .pauseFor(2500)
+      .deleteAll()
+      .typeString('Less code, Fewer bugs')
+      .pauseFor(2500)
+      .deleteAll()
+      .typeString('<strong>Automate it all</strong>')
+      .pauseFor(2500)
+      .start();
+  </script>
+</body>
+
+</html>
