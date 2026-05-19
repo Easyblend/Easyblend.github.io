@@ -143,7 +143,7 @@ export default function Hero() {
             Hi, I'm{" "}
             <span className="shimmer-text">Emmanuel Kumah.</span>
             <br />
-            <span className="text-ink-900">I build delightful software.</span>
+            <span className="text-ink-900">I build cool software.</span>
           </motion.h1>
 
           <motion.p
@@ -152,7 +152,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 text-lg text-ink-700 max-w-xl"
           >
-            Full-stack engineer crafting fast, scalable products end-to-end —
+            Software engineer crafting fast, scalable products end-to-end —
             from polished React interfaces to resilient Java &amp; Python
             backends.
           </motion.p>
@@ -176,7 +176,7 @@ export default function Hero() {
           >
             <a
               href="#projects"
-              className="cta-arrow inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-accent-500 to-electric-500 text-white font-semibold shadow-lg shadow-accent-500/25 hover:shadow-accent-500/45 hover:-translate-y-0.5 transition-all"
+              className="cta-arrow inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-linear-to-r from-accent-500 to-electric-500 text-white font-semibold shadow-lg shadow-accent-500/25 hover:shadow-accent-500/45 hover:-translate-y-0.5 transition-all"
             >
               View my work <span className="arrow"><ArrowDown size={16} /></span>
             </a>

@@ -29,7 +29,7 @@ export default function About() {
           </div>
           <div className="text-ink-700 text-lg leading-relaxed space-y-4">
             <p>
-              I'm a full-stack engineer with a soft spot for elegant interfaces
+              I'm a Software engineer with a soft spot for elegant interfaces
               and rock-solid backends. I've shipped products spanning realtime
               multiplayer games, Web3 wallets, lab sample management systems,
               and ML-driven web apps.
