@@ -12,32 +12,25 @@ const socials = [
 ];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="relative z-10 border-t border-ink-900/10 mt-10">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
-        {/* Big watermark name */}
+    <footer className="relative z-10 border-t border-bg-line">
+      {/* Giant watermark */}
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 pt-16 pb-10">
         <div
           aria-hidden
-          className="font-serif font-black tracking-tighter leading-none select-none pointer-events-none"
-          style={{
-            fontSize: "clamp(3rem, 12vw, 9rem)",
-            background:
-              "linear-gradient(180deg, rgba(13,13,24,0.08), transparent 80%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
+          className="serif leading-[0.85] text-fg-soft/30 select-none pointer-events-none"
+          style={{ fontSize: "clamp(72px, 18vw, 240px)" }}
         >
-          easyblend.
+          easyblend<span className="text-accent">.</span>
         </div>
 
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-ink-500">
-          <span>
-            © {new Date().getFullYear()} Emmanuel Kumah · Crafted with React +{" "}
-            <span className="text-accent-500">♥</span>
-          </span>
+        <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-sm text-fg-mute border-t border-bg-line pt-6">
+          <div className="mono text-[11px] uppercase tracking-widest">
+            © {year} Emmanuel Kumah · Paris, France
+          </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {socials.map(({ href, Icon, label }) => (
               <a
                 key={label}
@@ -45,17 +38,17 @@ export default function Footer() {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
                 aria-label={label}
-                className="p-2 rounded-lg text-ink-500 hover:text-ink-900 hover:bg-ink-900/5 transition-all"
+                className="p-2 rounded-md text-fg-mute hover:text-fg hover:bg-bg-lift transition-colors"
               >
-                <Icon size={18} />
+                <Icon size={16} />
               </a>
             ))}
             <a
               href="#top"
               aria-label="Back to top"
-              className="ml-2 p-2 rounded-lg bg-ink-900/5 text-ink-700 hover:text-ink-900 hover:-translate-y-0.5 transition-all"
+              className="ml-2 p-2 rounded-md text-fg-mute hover:text-fg hover:bg-bg-lift transition-colors"
             >
-              <ArrowUp size={18} />
+              <ArrowUp size={16} />
             </a>
           </div>
         </div>

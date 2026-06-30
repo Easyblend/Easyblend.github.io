@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { SectionLabel } from "./About";
 
 interface Job {
@@ -23,15 +23,15 @@ const experience: Job[] = [
     period: "Mar 2025 — Present",
     current: true,
     blurb:
-      "Engineering quality and platform reliability for an AI-powered fraud detection SaaS used by large enterprise insurers worldwide.",
+      "Engineering quality and platform reliability for Force — an AI-powered fraud-detection SaaS used by tier-1 insurers (AXA, Allstate and others) with 10K+ monthly active users.",
     bullets: [
-      "Led a performance testing tool evaluation (k6 vs OctoPerf) and drove company-wide adoption of OctoPerf as the standard solution across multiple engineering teams.",
-      "Designed and executed performance testing strategies for critical Insurance oriented user journeys (authentication, alerts, claims, collaboration features), validating system behavior under load using key observability metrics.",
-      "Identified backend performance bottlenecks under high concurrency, including service saturation and request timeouts, contributing to platform scalability improvements.",
-      "Built reusable performance testing assets integrated into CI/CD workflows, reducing manual QA effort and improving regression reliability.",
-      "Expanded QA coverage across new product areas during enterprise rollout initiatives, supporting feature validation across distributed deployments.",
+      "Led a multi-month tooling POC comparing K6 vs OctoPerf for UI performance testing across React, Java, C# and Python services — selected and rolled out OctoPerf as Shift's official PT tool, aligning 20+ engineers across 5 countries.",
+      "Designed and shipped the AXA FR performance test plan — 15-min loads from 10 → 40 VUs across login, alert, claim and comment flows; tracked P95/P99 iteration time, error rate, RPS and server CPU/RAM via Grafana on Azure.",
+      "Uncovered concrete backend bottlenecks: a document-upload saturation point at 40 VUs (CPU ~89%, 2.1% error rate) and search-endpoint timeouts past 12 minutes — fed directly into the platform's scaling roadmap.",
+      "Authored 20+ reusable K6 and OctoPerf scripts in the qa-automation repo, wired into Jenkins, GitHub Actions and Docker pipelines — cut manual QA effort by 40% and lifted regression coverage by 30%.",
+      "Now driving QA for SCIM rollout to US regions (Allstate), Document Storage deployment to Japan, the Allstate external-worker service, and a doc-service 404 flakiness investigation.",
     ],
-    stack: ["React", "TypeScript", "Java", "C#", "Python", "K6", "OctoPerf", "Grafana", "Azure"],
+    stack: ["React", "TypeScript", "Java", "C#", "Python", "K6", "OctoPerf", "Grafana", "Jenkins", "GitHub Actions", "Docker", "Azure"],
   },
   {
     role: "Frontend Software Engineer — Intern & Freelance",
@@ -40,11 +40,11 @@ const experience: Job[] = [
     location: "Paris, France",
     period: "Mar 2024 — Feb 2025",
     blurb:
-      "Delivered frontend features for a climate-tech SaaS platform, working across product and engineering teams.",
+      "Owned end-to-end frontend delivery for Kanop's climate-tech web platform, partnering with Product, Design and a senior backend engineer.",
     bullets: [
-      "Built and maintained React + TypeScript interfaces integrated with backend APIs.",
-      "Improved frontend reliability by introducing unit and integration testing with Jest and React Testing Library.",
-      "Delivered UI improvements that enhanced usability and contributed to better product engagement.",
+      "Built type-safe React + TypeScript UI, integrating new REST APIs via React Query.",
+      "Introduced Jest & React Testing Library — reached 90% coverage on critical user flows.",
+      "Shipped UI/UX improvements that landed directly on product KPIs (dashboard usability, onboarding).",
     ],
     stack: ["React", "TypeScript", "React Query", "Jest", "Tailwind"],
   },
@@ -55,117 +55,98 @@ const experience: Job[] = [
     location: "Side project",
     period: "2025 — Present",
     blurb:
-      "Built a SaaS platform connecting developers with real testers to improve pre-release software quality through structured bug reporting workflows.",
+      "A live SaaS that connects devs with real human testers for pre-launch bug-hunting — structured reports, triage workflow, screenshots, email digests.",
     bullets: [
-      "Designed and built a full-stack SaaS platform with authentication, role-based access control, and multi-tenant architecture.",
-      "Implemented an end-to-end bug reporting workflow including uploads, structured triage states, and automated notifications.",
-      "Developed an audit logging system for tracking system actions and improving traceability for teams.",
-      "Built automated weekly reporting workflows to summarize project activity and improve visibility for product owners.",
+      "Designed and shipped a Next.js 16 monorepo — marketing site + authenticated product app sharing one Postgres database via Prisma 7.",
+      "Built a 3-role RBAC layer (DEV / TESTER / ADMIN) on top of Supabase Auth, enforced in edge middleware and per-route with HTTP-only JWT cookies.",
+      "Engineered the end-to-end bug pipeline: React Hook Form → Cloudinary upload → Prisma transaction → owner notification, with an OPEN → IN_PROGRESS → RESOLVED → CLOSED triage flow.",
+      "Built a secret-gated weekly Vercel Cron that groups OPEN/RESOLVED bugs per project owner and sends digest emails via Brevo SMTP.",
     ],
-    stack: ["Next.js", "React", "TypeScript", "Tailwind", "Prisma", "PostgreSQL", "Supabase", "Cloudinary", "Vercel"],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind 4", "Prisma", "PostgreSQL", "Supabase", "Cloudinary", "Brevo", "Vercel"],
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="max-w-2xl">
-          <SectionLabel number="02">Experience</SectionLabel>
-          <h2 className="mt-3 font-serif text-4xl sm:text-5xl font-black leading-tight">
-            Where I've been{" "}
-            <span className="shimmer-text">shipping</span>.
-          </h2>
-          <p className="mt-3 text-ink-600">
-            From a climate-tech startup at Station F to a global AI fraud-detection
-            platform — and a SaaS of my own on the side.
-          </p>
-        </div>
+    <section id="experience" className="relative py-28 sm:py-40 px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel>Experience</SectionLabel>
 
-        <div className="mt-14 relative">
-          {/* timeline rail */}
-          <div className="absolute left-4 md:left-6 top-2 bottom-2 w-px bg-gradient-to-b from-accent-500/60 via-electric-500/40 to-transparent" />
-          <ul className="space-y-10">
-            {experience.map((job, i) => (
-              <motion.li
-                key={job.role + job.company}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="relative pl-14 md:pl-20"
-              >
-                <span
-                  className={`absolute left-0 md:left-2 top-1.5 w-8 h-8 rounded-xl bg-gradient-to-br from-accent-500 to-electric-500 flex items-center justify-center text-white shadow-lg shadow-accent-500/25 ${
-                    job.current ? "ring-4 ring-accent-500/20" : ""
-                  }`}
-                  aria-hidden
-                >
-                  <Briefcase size={14} />
-                </span>
+        <h2 className="mt-8 serif text-[clamp(40px,7.5vw,108px)] leading-[0.95] text-fg max-w-5xl">
+          Where I've been{" "}
+          <span className="serif-it text-fg-mute">shipping</span>
+          <span className="text-accent">.</span>
+        </h2>
 
-                <div className="glass card-glow rounded-2xl p-6 sticker">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <div>
-                      <h3 className="font-semibold text-lg text-ink-900">
-                        {job.role}
-                      </h3>
-                      <p className="text-sm text-ink-700 mt-0.5">
-                        {job.url ? (
-                          <a
-                            href={job.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-accent-600 hover:underline inline-flex items-center gap-1"
-                          >
-                            {job.company} <ExternalLink size={12} />
-                          </a>
-                        ) : (
-                          <span className="text-accent-600">{job.company}</span>
-                        )}
-                        <span className="text-ink-400"> · {job.location}</span>
-                      </p>
-                    </div>
-                    <span
-                      className={`text-xs font-mono px-2.5 py-1 rounded-full border ${
-                        job.current
-                          ? "border-mint/40 text-emerald-700 bg-mint/15"
-                          : "border-ink-900/10 text-ink-500 bg-white/60"
-                      }`}
-                    >
-                      {job.current && (
-                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-mint mr-1.5 animate-pulse align-middle" />
-                      )}
-                      {job.period}
-                    </span>
-                  </div>
+        <ol className="mt-16 relative pl-8">
+          <span className="tl-line" aria-hidden />
+          {experience.map((job, i) => (
+            <motion.li
+              key={job.role + job.company}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: i * 0.05 }}
+              className="relative pb-16 last:pb-0"
+            >
+              <span
+                className={`tl-dot ${job.current ? "is-current" : ""}`}
+                aria-hidden
+              />
 
-                  <p className="mt-3 text-ink-700 text-[15px]">{job.blurb}</p>
+              <div className="mono text-[11px] uppercase tracking-widest text-fg-mute">
+                {job.period}
+                {job.current && (
+                  <span className="ml-2 text-accent">· Currently</span>
+                )}
+              </div>
 
-                  <ul className="mt-4 space-y-2 text-sm text-ink-600">
-                    {job.bullets.map((b) => (
-                      <li key={b} className="flex gap-2">
-                        <span className="text-accent-500 mt-1">▹</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <h3 className="mt-3 serif text-[clamp(28px,3.5vw,42px)] leading-tight text-fg">
+                {job.role}
+              </h3>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {job.stack.map((s) => (
-                      <span
-                        key={s}
-                        className="text-[11px] font-mono px-2 py-1 rounded-md bg-ink-900/5 text-ink-700 border border-ink-900/5"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
+              <p className="mt-2 text-fg-mute">
+                {job.url ? (
+                  <a
+                    href={job.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="ulink text-fg inline-flex items-center gap-1"
+                  >
+                    {job.company} <ExternalLink size={12} />
+                  </a>
+                ) : (
+                  <span className="text-fg">{job.company}</span>
+                )}
+                <span> · {job.location}</span>
+              </p>
+
+              <p className="mt-6 max-w-3xl text-fg text-lg leading-relaxed">
+                {job.blurb}
+              </p>
+
+              <ul className="mt-6 space-y-2.5 max-w-3xl text-fg-mute">
+                {job.bullets.map((b) => (
+                  <li key={b} className="grid grid-cols-[auto_1fr] gap-3">
+                    <span className="text-accent mt-2 select-none">—</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 flex flex-wrap gap-1.5">
+                {job.stack.map((s) => (
+                  <span
+                    key={s}
+                    className="mono text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-bg-line text-fg-mute"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.li>
+          ))}
+        </ol>
       </div>
     </section>
   );

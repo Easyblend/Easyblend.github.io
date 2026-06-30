@@ -1,52 +1,46 @@
-// Auto-scrolling tech strip — Dribbble-style "as featured" marquee.
-const items = [
-  { icon: "devicon-react-original colored", label: "React" },
-  { icon: "devicon-typescript-plain colored", label: "TypeScript" },
-  { icon: "devicon-nextjs-original", label: "Next.js" },
-  { icon: "devicon-tailwindcss-plain colored", label: "Tailwind" },
-  { icon: "devicon-java-plain colored", label: "Java" },
-  { icon: "devicon-spring-original colored", label: "Spring" },
-  { icon: "devicon-python-plain colored", label: "Python" },
-  { icon: "devicon-fastapi-plain colored", label: "FastAPI" },
-  { icon: "devicon-postgresql-plain colored", label: "PostgreSQL" },
-  { icon: "devicon-docker-plain colored", label: "Docker" },
-  { icon: "devicon-jest-plain colored", label: "Jest" },
-  { icon: "devicon-github-original", label: "GitHub Actions" },
-  { icon: "devicon-jenkins-line colored", label: "Jenkins" },
-  { icon: "devicon-vercel-original", label: "Vercel" },
+// Word marquee — replaces the icon strip with a typographic loop.
+// The text IS the texture; that's the whole point of the duotone.
+const words = [
+  "Frontend",
+  "Backend",
+  "TypeScript",
+  "Java",
+  "Python",
+  "Next.js",
+  "Spring",
+  "FastAPI",
+  "Postgres",
+  "Docker",
+  "Performance",
+  "Reliability",
+  "Test coverage",
+  "Shipped",
 ];
 
-export default function TechMarquee() {
-  const row = [...items, ...items]; // duplicate for seamless loop
+export default function TypeMarquee() {
+  const row = [...words, ...words];
   return (
-    <div className="relative py-8 border-y border-ink-900/8 bg-white/40 overflow-hidden marquee">
-      {/* edge fades */}
-      <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10"
-        style={{
-          background:
-            "linear-gradient(to right, var(--color-cream-50), transparent)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10"
-        style={{
-          background:
-            "linear-gradient(to left, var(--color-cream-50), transparent)",
-        }}
-      />
-      <div className="marquee-track gap-10 px-6">
-        {row.map((item, i) => (
-          <div
-            key={`${item.label}-${i}`}
-            className="flex items-center gap-2 text-ink-700 shrink-0"
-            aria-hidden={i >= items.length}
+    <section
+      aria-label="What I work with"
+      className="relative py-12 sm:py-16 type-marquee-wrap overflow-hidden border-y border-bg-line"
+    >
+      <div className="type-marquee gap-10 sm:gap-14 items-center whitespace-nowrap">
+        {row.map((w, i) => (
+          <span
+            key={`${w}-${i}`}
+            className="serif text-fg-mute text-[clamp(40px,7vw,96px)] leading-none flex items-center gap-10 sm:gap-14"
+            aria-hidden={i >= words.length}
           >
-            <i className={`${item.icon} text-2xl`} />
-            <span className="font-mono text-sm">{item.label}</span>
-          </div>
+            {w}
+            <span
+              aria-hidden
+              className="text-accent text-[0.65em] leading-none translate-y-[-0.15em]"
+            >
+              ✦
+            </span>
+          </span>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

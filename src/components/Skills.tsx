@@ -3,46 +3,72 @@ import { useInView } from "react-intersection-observer";
 import { skillGroups } from "../data";
 import { SectionLabel } from "./About";
 
-export default function Skills() {
-  const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
-  return (
-    <section id="skills" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6" ref={ref}>
-        <div className="text-center max-w-2xl mx-auto">
-          <SectionLabel number="03">Toolkit</SectionLabel>
-          <h2 className="mt-3 font-serif text-4xl sm:text-5xl font-black leading-tight">
-            Tools I reach for <span className="shimmer-text">every day</span>.
-          </h2>
-          <p className="mt-4 text-ink-600">
-            A pragmatic stack honed across products of every shape and size.
-          </p>
-        </div>
+const lvl: Record<string, "DAILY" | "STRONG" | "WORKING"> = {
+  React: "DAILY",
+  TypeScript: "DAILY",
+  JavaScript: "DAILY",
+  Tailwind: "DAILY",
+  HTML5: "DAILY",
+  CSS3: "DAILY",
+  Git: "DAILY",
+  Java: "STRONG",
+  Spring: "STRONG",
+  Python: "STRONG",
+  FastAPI: "STRONG",
+  "Node.js": "STRONG",
+  PostgreSQL: "STRONG",
+  Docker: "STRONG",
+  Firebase: "STRONG",
+  "Three.js": "WORKING",
+  "Socket.IO": "WORKING",
+  SQLite: "WORKING",
+  Terraform: "WORKING",
+};
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+export default function Skills() {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
+  return (
+    <section
+      id="skills"
+      ref={ref}
+      className="relative py-28 sm:py-40 px-5 sm:px-8 border-t border-bg-line"
+    >
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel>Stack</SectionLabel>
+
+        <h2 className="mt-8 serif text-[clamp(40px,7.5vw,108px)] leading-[0.95] text-fg max-w-5xl">
+          What I reach for{" "}
+          <span className="serif-it text-fg-mute">when it's time</span>
+          <span className="text-accent">.</span>
+        </h2>
+
+        <div className="mt-16 grid md:grid-cols-3 gap-x-12 gap-y-10">
           {skillGroups.map((group, gi) => (
             <motion.div
               key={group.label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: gi * 0.1 }}
-              className="glass card-glow rounded-2xl p-6 sticker"
+              transition={{ duration: 0.5, delay: gi * 0.08 }}
             >
-              <div className="text-sm font-mono uppercase tracking-widest text-ink-500">
-                {group.label}
+              <div className="flex items-baseline justify-between border-b border-fg-soft pb-3">
+                <h3 className="serif text-2xl text-fg">{group.label}</h3>
+                <span className="mono text-[10px] uppercase tracking-widest text-fg-mute">
+                  {String(group.items.length).padStart(2, "0")}
+                </span>
               </div>
-              <div className="mt-5 grid grid-cols-3 gap-4">
-                {group.items.map((s) => (
-                  <div
-                    key={s.name}
-                    className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-ink-900/5 transition-all"
-                  >
-                    <i
-                      className={`${s.icon} text-4xl transition-transform group-hover:scale-110 group-hover:-translate-y-0.5`}
-                    />
-                    <span className="text-xs text-ink-600">{s.name}</span>
-                  </div>
+
+              <ul>
+                {group.items.map((s, i) => (
+                  <li key={s.name} className="skill-row">
+                    <span className="num">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="name">{s.name}</span>
+                    <span className="lvl">{lvl[s.name] ?? "WORKING"}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>
