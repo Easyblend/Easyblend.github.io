@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { skillGroups } from "../data";
 import { SectionLabel } from "./About";
 
-const lvl: Record<string, "DAILY" | "STRONG" | "WORKING"> = {
+const lvl: Record<string, "DAILY" | "STRONG" > = {
   React: "DAILY",
   TypeScript: "DAILY",
   JavaScript: "DAILY",
@@ -11,18 +11,16 @@ const lvl: Record<string, "DAILY" | "STRONG" | "WORKING"> = {
   HTML5: "DAILY",
   CSS3: "DAILY",
   Git: "DAILY",
-  Java: "STRONG",
+  Java: "DAILY",
   Spring: "STRONG",
   Python: "STRONG",
   FastAPI: "STRONG",
   "Node.js": "STRONG",
-  PostgreSQL: "STRONG",
+  PostgreSQL: "DAILY",
   Docker: "STRONG",
   Firebase: "STRONG",
-  "Three.js": "WORKING",
-  "Socket.IO": "WORKING",
-  SQLite: "WORKING",
-  Terraform: "WORKING",
+  SQLite: "STRONG",
+  Terraform: "STRONG",
 };
 
 export default function Skills() {
@@ -65,7 +63,7 @@ export default function Skills() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="name">{s.name}</span>
-                    <span className="lvl">{lvl[s.name] ?? "WORKING"}</span>
+                    <span className="lvl">{lvl[s.name] ?? "STRONG"}</span>
                   </li>
                 ))}
               </ul>

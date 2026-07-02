@@ -23,15 +23,20 @@ const experience: Job[] = [
     period: "Mar 2025 — Present",
     current: true,
     blurb:
-      "Engineering quality and platform reliability for Force — an AI-powered fraud-detection SaaS used by tier-1 insurers (AXA, Allstate and others) with 10K+ monthly active users.",
+      "Engineering quality and platform reliability for an AI-powered fraud-detection SaaS used by leading global insurers.",
     bullets: [
-      "Led a multi-month tooling POC comparing K6 vs OctoPerf for UI performance testing across React, Java, C# and Python services — selected and rolled out OctoPerf as Shift's official PT tool, aligning 20+ engineers across 5 countries.",
-      "Designed and shipped the AXA FR performance test plan — 15-min loads from 10 → 40 VUs across login, alert, claim and comment flows; tracked P95/P99 iteration time, error rate, RPS and server CPU/RAM via Grafana on Azure.",
-      "Uncovered concrete backend bottlenecks: a document-upload saturation point at 40 VUs (CPU ~89%, 2.1% error rate) and search-endpoint timeouts past 12 minutes — fed directly into the platform's scaling roadmap.",
+      "Led a multi-month proof of concept comparing K6 and OctoPerf for UI performance testing across React, Java, C#, and Python services. Selected and rolled out OctoPerf as the primary performance testing tool, aligning 20+ engineers across five countries.",
+      "Designed and executed performance test plans for a major European insurer — tracked P95/P99 iteration time, error rate, RPS and server CPU/RAM via Grafana on Azure.",
+      "Identified backend scalability bottlenecks through load testing, including document-upload saturation and search endpoint timeouts, providing engineering teams with actionable optimization priorities",
       "Authored 20+ reusable K6 and OctoPerf scripts in the qa-automation repo, wired into Jenkins, GitHub Actions and Docker pipelines — cut manual QA effort by 40% and lifted regression coverage by 30%.",
-      "Now driving QA for SCIM rollout to US regions (Allstate), Document Storage deployment to Japan, the Allstate external-worker service, and a doc-service 404 flakiness investigation.",
+      "Leading QA initiatives for identity management, document services, international deployments, and backend service integrations across multiple enterprise customers.",
     ],
-    stack: ["React", "TypeScript", "Java", "C#", "Python", "K6", "OctoPerf", "Grafana", "Jenkins", "GitHub Actions", "Docker", "Azure"],
+    stack: ["Performance Testing: OctoPerf, k6",
+      "Backend: .NET (C#), Java, Python",
+      "Frontend: React",
+      "Observability: Grafana",
+      "Infrastructure: Azure, Docker",
+      "CI/CD: Jenkins, GitHub Actions"],
   },
   {
     role: "Frontend Software Engineer — Intern & Freelance",
@@ -46,7 +51,12 @@ const experience: Job[] = [
       "Introduced Jest & React Testing Library — reached 90% coverage on critical user flows.",
       "Shipped UI/UX improvements that landed directly on product KPIs (dashboard usability, onboarding).",
     ],
-    stack: ["React", "TypeScript", "React Query", "Jest", "Tailwind"],
+    stack: [
+      "Frontend: React, TypeScript",
+      "State/Data: React Query",
+      "Testing: Jest, React Testing Library",
+      "Styling: Tailwind CSS"
+    ]
   },
   {
     role: "Founder & Engineer",

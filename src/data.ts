@@ -176,35 +176,48 @@ export const skillGroups: { label: string; items: { name: string; icon: string }
   {
     label: "Frontend",
     items: [
-      { name: "React", icon: "devicon-react-original colored" },
-      { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-      { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-      { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
-      { name: "HTML5", icon: "devicon-html5-plain colored" },
-      { name: "CSS3", icon: "devicon-css3-plain colored" },
-      { name: "Three.js", icon: "devicon-threejs-original" },
+      { name: "Frameworks: React, Next.js", icon: "devicon-react-original colored" },
+      { name: "Language: TypeScript", icon: "devicon-typescript-plain colored" },
+      { name: "UI: Tailwind CSS, Material-UI", icon: "devicon-tailwindcss-plain colored" },
+      { name: "Unit Testing: Jest, React Testing Library", icon: "devicon-jest-plain colored" },
+      { name: "E2E Testing: Cypress, Playwright", icon: "devicon-cypress-plain colored" }
     ],
   },
+
   {
     label: "Backend",
     items: [
       { name: "Java", icon: "devicon-java-plain" },
-      { name: "Spring", icon: "devicon-spring-plain colored" },
       { name: "Python", icon: "devicon-python-plain colored" },
       { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
+      { name: ".NET (C#)", icon: "devicon-dotnetcore-plain colored" },
+      { name: "Spring Boot", icon: "devicon-spring-plain colored" },
       { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-      { name: "Socket.IO", icon: "devicon-socketio-plain" },
     ],
   },
+
   {
-    label: "Data & Cloud",
+    label: "Testing & Performance",
+    items: [
+      { name: "k6", icon: "devicon-plain" },
+      { name: "Playwright", icon: "devicon-plain" },
+      { name: "Cypress", icon: "devicon-plain" },
+      { name: "Postman", icon: "devicon-postman-plain colored" },
+      { name: "OctoPerf", icon: "devicon-plain" },
+      { name: "Jest", icon: "devicon-jest-plain colored" },
+      { name: "React Testing Library", icon: "devicon-plain" }
+    ],
+  },
+
+  {
+    label: "Infrastructure & DevOps",
     items: [
       { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-      { name: "Firebase", icon: "devicon-firebase-plain colored" },
-      { name: "SQLite", icon: "devicon-sqlite-plain colored" },
       { name: "Docker", icon: "devicon-docker-plain colored" },
-      { name: "Terraform", icon: "devicon-terraform-plain colored" },
+      { name: "Azure", icon: "devicon-azure-plain colored" },
       { name: "Git", icon: "devicon-git-plain colored" },
+      { name: "Jenkins", icon: "devicon-jenkins-line colored" },
+      { name: "GitHub Actions", icon: "devicon-githubactions-plain" }
     ],
-  },
+  }
 ];
