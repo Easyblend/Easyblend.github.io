@@ -9,6 +9,24 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "CrowdTest — Crowdsourced QA Platform",
+    description:
+      "A live SaaS connecting devs with real human testers for pre-launch bug hunting. Next.js 16 monorepo (marketing + product) sharing one Postgres via Prisma 7, Supabase Auth with edge-middleware RBAC (DEV/TESTER/ADMIN), Cloudinary-backed screenshots, Groq LLM bug-report rewriter, weekly Vercel Cron digests over Brevo SMTP, and full Sentry tracing across client/server/edge.",
+    image: "/assets/projects/crowdtest.png",
+    link: "https://crowdtest.dev",
+    tech: [
+      "devicon-nextjs-plain",
+      "devicon-react-original",
+      "devicon-typescript-plain",
+      "devicon-tailwindcss-plain",
+      "devicon-prisma-plain",
+      "devicon-postgresql-plain",
+      "devicon-supabase-plain",
+      "devicon-vercel-plain",
+    ],
+    featured: true,
+  },
+  {
     title: "Biological Sample Management",
     description:
       "Full-stack platform for tracking biological samples — React + TypeScript frontend, FastAPI + SQLAlchemy backend, Postgres, dockerized for reproducible deploys.",
